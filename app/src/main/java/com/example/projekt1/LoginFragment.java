@@ -14,6 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private Context context;
@@ -39,6 +45,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         groupNameEditText = view.findViewById(R.id.groupName);
         groupIdEditText = view.findViewById(R.id.groupId);
         loginBtn = view.findViewById(R.id.loginBtn);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("groups");
+
+        Map<String, Group> groups = new HashMap<>();
+        groups.put("1234", new Group(1234,"Planning Poker"));
+        ref.setValue(groups);
 
 
         return view;

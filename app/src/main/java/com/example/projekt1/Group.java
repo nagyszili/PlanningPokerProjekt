@@ -10,6 +10,24 @@ public class Group {
 
     private Vector<Feature> features;
 
+    public Group(int id, String groupName) {
+        this.id = id;
+        this.groupName = groupName;
+    }
 
+    public int getId() {
+        return id;
+    }
 
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public String getAdmin() {
+        return admin;
+    }
+
+    public Vector<Feature> getFeatures() {
+        return features;
+    }
 }
