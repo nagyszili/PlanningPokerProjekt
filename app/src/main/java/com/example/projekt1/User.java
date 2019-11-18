@@ -4,7 +4,7 @@ public class User {
 
     private int id;
     private String name;
-    private boolean voted;
+//    private boolean voted;
 
     public int getId() {
         return id;
@@ -14,7 +14,7 @@ public class User {
         return name;
     }
 
-    public boolean isVoted() {
-        return voted;
-    }
+//    public boolean isVoted() {
+//        return voted;
+//    }
 }

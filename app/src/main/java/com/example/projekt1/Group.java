@@ -4,18 +4,18 @@ import java.util.Vector;
 
 public class Group {
 
-    private int id;
+    private String id;
     private String groupName;
     private String admin;
 
     private Vector<Feature> features;
 
-    public Group(int id, String groupName) {
+    public Group(String id, String groupName) {
         this.id = id;
         this.groupName = groupName;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

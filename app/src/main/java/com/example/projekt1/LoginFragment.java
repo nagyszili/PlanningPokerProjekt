@@ -46,12 +46,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         groupIdEditText = view.findViewById(R.id.groupId);
         loginBtn = view.findViewById(R.id.loginBtn);
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("groups");
+        loginBtn.setOnClickListener(this);
 
-        Map<String, Group> groups = new HashMap<>();
-        groups.put("1234", new Group(1234,"Planning Poker"));
-        ref.setValue(groups);
 
 
         return view;
@@ -76,9 +72,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         String groupName = this.groupNameEditText.getText().toString();
-        String groupId = this.groupNameEditText.getText().toString();
+        String groupId = this.groupIdEditText.getText().toString();
 
         if (!groupName.isEmpty() && !groupId.isEmpty()) {
+
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference ref = database.getReference("groups");
+
+            Map<String, Group> groups = new HashMap<>();
+            groups.put(groupId, new Group(groupId,groupName));
+            ref.setValue(groups);
+
 
             startQuestionsFragment(groupName, groupId);
         }
