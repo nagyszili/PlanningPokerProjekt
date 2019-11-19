@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -39,6 +40,11 @@ public class SetFeaturesFragment extends Fragment {
         String groupName =  args != null ? args.getString("groupName") : null;
         String groupId =  args != null ? args.getString("groupId") : null;
 
+
+        recyclerView = view.findViewById(R.id.listFeaturesRecyclerView);
+        adapter = new FeaturesAdapter(context,features);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
 
         return view;

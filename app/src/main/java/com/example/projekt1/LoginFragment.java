@@ -79,9 +79,33 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference ref = database.getReference("groups");
 
+            Feature feature1 = new Feature("Login",1);
+            Feature feature2 = new Feature("Register",2);
+            Feature feature3 = new Feature("Vote",3);
+
+            User user1 = new User(1,"Szili1");
+            User user2 = new User(2,"Szili2");
+            User user3 = new User(3,"Szili3");
+
+            Group group1 = new Group(groupId,groupName);
+
+            group1.addNewFeature(feature1);
+            group1.addNewFeature(feature2);
+            group1.addNewFeature(feature3);
+            group1.activateFeature(feature1);
+
+            user1.setVotedValue("Coffe Time!");
+            user2.setVotedValue("100");
+            feature1.addVotedUser(user1);
+            feature1.addVotedUser(user2);
+
+
+
+
+
             Map<String, Group> groups = new HashMap<>();
-            groups.put(groupId, new Group(groupId,groupName));
-            ref.setValue(groups);
+            groups.put(groupId, group1);
+            ref.push().setValue(groups);
 
 
             startQuestionsFragment(groupName, groupId);

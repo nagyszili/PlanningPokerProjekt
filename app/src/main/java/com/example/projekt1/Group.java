@@ -7,8 +7,8 @@ public class Group {
     private String id;
     private String groupName;
     private String admin;
-
-    private Vector<Feature> features;
+    private Feature activeFeature;
+    private Vector<Feature> features = new Vector<>();
 
     public Group() {
     }
@@ -45,6 +45,21 @@ public class Group {
 
     public Vector<Feature> getFeatures() {
         return features;
+    }
+
+    public Feature getActiveFeature() {
+        return activeFeature;
+    }
+
+    public void activateFeature(Feature activeFeature) {
+        this.activeFeature = activeFeature;
+        this.activeFeature.setActive(true);
+    }
+
+    public void deactivateFeature()
+    {
+        this.activeFeature.setActive(false);
+        this.activeFeature = null;
     }
 
     public void setId(String id) {

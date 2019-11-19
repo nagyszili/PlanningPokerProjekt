@@ -7,7 +7,7 @@ public class Feature {
     private String name;
     private int id;
     private boolean active;
-    private Vector<User> usersVoted;
+    private Vector<User> usersVoted = new Vector<>();
 
     public Feature() {
     }
