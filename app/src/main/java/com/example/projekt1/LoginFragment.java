@@ -61,9 +61,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        SetQuestionFragment setQuestionFragment = new SetQuestionFragment(context);
-        setQuestionFragment.setArguments(bundle);
-        transaction.replace(R.id.container, setQuestionFragment);
+        SetFeaturesFragment setFeaturesFragment = new SetFeaturesFragment(context);
+        setFeaturesFragment.setArguments(bundle);
+        transaction.replace(R.id.container, setFeaturesFragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

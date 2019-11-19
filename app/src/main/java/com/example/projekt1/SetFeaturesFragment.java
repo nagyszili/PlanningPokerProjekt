@@ -9,15 +9,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class SetQuestionFragment extends Fragment {
+import java.util.ArrayList;
+
+public class SetFeaturesFragment extends Fragment {
 
     private Context context;
+    private RecyclerView recyclerView;
+    private FeaturesAdapter adapter;
+    private ArrayList<Feature> features = new ArrayList<>();
 
-    public SetQuestionFragment() {
+
+
+    public SetFeaturesFragment() {
     }
 
-    public SetQuestionFragment(Context context) {
+    public SetFeaturesFragment(Context context) {
         this.context = context;
     }
 
