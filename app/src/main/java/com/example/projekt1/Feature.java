@@ -9,8 +9,6 @@ public class Feature {
     private boolean active;
     private Vector<User> usersVoted;
 
-//    private boolean voted;
-
 
     public String getName() {
         return name;
