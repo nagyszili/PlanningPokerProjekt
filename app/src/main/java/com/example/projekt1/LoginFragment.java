@@ -105,7 +105,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
             Map<String, Group> groups = new HashMap<>();
             groups.put(groupId, group1);
-            ref.push().setValue(groups);
+
+            DatabaseReference childRef = ref.child(groupId);
+            childRef.push().setValue(groups);
 
 
             startQuestionsFragment(groupName, groupId);
