@@ -1,13 +1,13 @@
 package com.example.projekt1;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Feature {
 
     private String name;
     private int id;
     private boolean active;
-    private Vector<User> usersVoted = new Vector<>();
+    private ArrayList<User> usersVoted = new ArrayList<>();
 
     public Feature() {
     }
@@ -39,7 +39,7 @@ public class Feature {
         return active;
     }
 
-    public Vector<User> getUsersVoted() {
+    public ArrayList<User> getUsersVoted() {
         return usersVoted;
     }
 
@@ -55,7 +55,7 @@ public class Feature {
         this.active = active;
     }
 
-    public void setUsersVoted(Vector<User> usersVoted) {
+    public void setUsersVoted(ArrayList<User> usersVoted) {
         this.usersVoted = usersVoted;
     }
 

@@ -1,6 +1,6 @@
 package com.example.projekt1;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Group {
 
@@ -8,7 +8,7 @@ public class Group {
     private String groupName;
     private String admin;
     private Feature activeFeature;
-    private Vector<Feature> features = new Vector<>();
+    private ArrayList<Feature> features = new ArrayList<>();
 
     public Group() {
     }
@@ -18,13 +18,13 @@ public class Group {
         this.groupName = groupName;
     }
 
-    public Group(String id, String groupName, Vector<Feature> features) {
+    public Group(String id, String groupName, ArrayList<Feature> features) {
         this.id = id;
         this.groupName = groupName;
         this.features = features;
     }
 
-    public Group(String id, String groupName, String admin, Vector<Feature> features) {
+    public Group(String id, String groupName, String admin, ArrayList<Feature> features) {
         this.id = id;
         this.groupName = groupName;
         this.admin = admin;
@@ -43,7 +43,7 @@ public class Group {
         return admin;
     }
 
-    public Vector<Feature> getFeatures() {
+    public ArrayList<Feature> getFeatures() {
         return features;
     }
 
@@ -74,7 +74,7 @@ public class Group {
         this.admin = admin;
     }
 
-    public void setFeatures(Vector<Feature> features) {
+    public void setFeatures(ArrayList<Feature> features) {
         this.features = features;
     }
 
