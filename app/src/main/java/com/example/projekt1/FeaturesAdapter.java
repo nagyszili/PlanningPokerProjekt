@@ -62,20 +62,35 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
         holder.aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                features.get(position).setActive(isChecked);
+
                 if (isChecked) {
+
+//                    for (Feature f : features) {
+//
+//                        if (features.get(position) != f) {
+//                            f.setActive(false);
+//                            holder.aSwitch.setChecked(false);
+//
+//
+//
+//                        } else {
+//                            f.setActive(true);
+//                            holder.aSwitch.setChecked(true);
+//
+//
+//                        }
+//                    }
                     features.get(position).setActive(true);
                     group.child("activeFeature").setValue(features.get(position));
+
                 } else {
+
                     group.child("activeFeature").setValue(null);
                     features.get(position).setActive(false);
+
+
                 }
 
-                if (features.get(position).isActive()) {
-                    holder.aSwitch.setChecked(true);
-                } else {
-                    holder.aSwitch.setChecked(false);
-                }
 
             }
         });
@@ -86,36 +101,36 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
             holder.aSwitch.setChecked(false);
         }
 
-        group.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                Group group = dataSnapshot.getValue(Group.class);
-
-//                for (DataSnapshot data : dataSnapshot.getChildren())
-//                {
+//        group.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //
-//                }
-                Feature aFeature = dataSnapshot.getValue(Feature.class);
-//                if (aFeature != null)
-//                {
-                    if (aFeature != null && aFeature.equals(features.get(position))) {
-                        holder.aSwitch.setChecked(true);
-                    }
-                    else {
-                        holder.aSwitch.setChecked(false);
-
-                    }
-
-//                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//                Group group = dataSnapshot.getValue(Group.class);
+//
+////                for (DataSnapshot data : dataSnapshot.getChildren())
+////                {
+////
+////                }
+//                Feature aFeature = group != null ? group.getActiveFeature() : null;
+////                if (aFeature != null)
+////                {
+//                    if (aFeature != null && aFeature.equals(features.get(position))) {
+//                        holder.aSwitch.setChecked(true);
+//                    }
+//                    else {
+//                        holder.aSwitch.setChecked(false);
+//
+//                    }
+//
+////                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
     }

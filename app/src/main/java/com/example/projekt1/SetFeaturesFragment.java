@@ -82,9 +82,9 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
                     recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
                     recyclerView.setAdapter(adapter);
                 }
-                else {
-//                    Toast.makeText(getContext(),"Nincs semmi a featuresben", Toast.LENGTH_SHORT).show();
-                }
+//                else {
+////                    Toast.makeText(getContext(),"Nincs semmi a featuresben", Toast.LENGTH_SHORT).show();
+//                }
 
             }
 
