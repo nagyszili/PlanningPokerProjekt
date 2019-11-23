@@ -1,6 +1,7 @@
 package com.example.projekt1;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Feature {
 
@@ -8,6 +9,7 @@ public class Feature {
     private int id;
     private boolean active;
     private ArrayList<User> usersVoted = new ArrayList<>();
+//    private Map<String,String> usersVote;
 
     public Feature() {
     }

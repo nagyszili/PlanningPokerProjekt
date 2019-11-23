@@ -21,8 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
@@ -82,25 +80,26 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference ref = database.getReference("groups");
 
-            Feature feature1 = new Feature("Login", 1);
-            Feature feature2 = new Feature("Register", 2);
-            Feature feature3 = new Feature("Vote", 3);
-
-            User user1 = new User(1, "Szili1");
-            User user2 = new User(2, "Szili2");
-            User user3 = new User(3, "Szili3");
-
             final Group group1 = new Group(groupId, groupName);
 
-            group1.addNewFeature(feature1);
-            group1.addNewFeature(feature2);
-            group1.addNewFeature(feature3);
-            group1.activateFeature(feature1);
+//            Feature feature1 = new Feature("Login", 1);
+//            Feature feature2 = new Feature("Register", 2);
+//            Feature feature3 = new Feature("Vote", 3);
+//
+//            User user1 = new User(1, "Szili1");
+//            User user2 = new User(2, "Szili2");
+//            User user3 = new User(3, "Szili3");
 
-            user1.setVotedValue("Coffe Time!");
-            user2.setVotedValue("100");
-            feature1.addVotedUser(user1);
-            feature1.addVotedUser(user2);
+
+//            group1.addNewFeature(feature1);
+//            group1.addNewFeature(feature2);
+//            group1.addNewFeature(feature3);
+//            group1.activateFeature(feature1);
+//
+//            user1.setVotedValue("Coffe Time!");
+//            user2.setVotedValue("100");
+//            feature1.addVotedUser(user1);
+//            feature1.addVotedUser(user2);
 
 
             ref.addListenerForSingleValueEvent(new ValueEventListener() {

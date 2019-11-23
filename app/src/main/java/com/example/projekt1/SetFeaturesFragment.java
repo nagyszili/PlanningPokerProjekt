@@ -94,14 +94,9 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
             }
         });
 
-
-
-
-
-
-
         return view;
     }
+
 
     @Override
     public void onClick(View v) {
