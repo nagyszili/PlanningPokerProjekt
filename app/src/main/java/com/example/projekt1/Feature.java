@@ -6,16 +6,19 @@ import java.util.Map;
 public class Feature {
 
     private String name;
-    private int id;
+    private static int id;
     private boolean active;
     private ArrayList<User> usersVoted = new ArrayList<>();
 //    private Map<String,String> usersVote;
 
     public Feature() {
+        this.id += 1;
     }
 
     public Feature(String name) {
         this.name = name;
+        this.id += 1;
+
     }
 
     public Feature(String name, int id) {

@@ -120,7 +120,7 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
                 {
                     feature.setName(input.getText().toString());
 //                    features.add(feature);
-                    group.child("features").push().setValue(feature);
+                    group.child("features").child(String.valueOf(feature.getId())).setValue(feature);
                 }
 
 
