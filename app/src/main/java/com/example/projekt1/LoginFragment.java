@@ -44,6 +44,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.login_fragment_layout, container, false);
+
         groupNameEditText = view.findViewById(R.id.groupName);
         groupIdEditText = view.findViewById(R.id.groupId);
         loginBtn = view.findViewById(R.id.loginBtn);
@@ -82,39 +83,26 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
             final Group group1 = new Group(groupId, groupName);
 
-//            Feature feature1 = new Feature("Login", 1);
-//            Feature feature2 = new Feature("Register", 2);
-//            Feature feature3 = new Feature("Vote", 3);
-//
-//            User user1 = new User(1, "Szili1");
-//            User user2 = new User(2, "Szili2");
-//            User user3 = new User(3, "Szili3");
-
-
-//            group1.addNewFeature(feature1);
-//            group1.addNewFeature(feature2);
-//            group1.addNewFeature(feature3);
-//            group1.activateFeature(feature1);
-//
-//            user1.setVotedValue("Coffe Time!");
-//            user2.setVotedValue("100");
-//            feature1.addVotedUser(user1);
-//            feature1.addVotedUser(user2);
-
 
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.child(groupId).exists()) {
+                        String name = dataSnapshot.child(groupId).child("groupName").getValue(String.class);
 
-                        Toast.makeText(getContext(), "This group existing", Toast.LENGTH_SHORT).show();
+                        if (name != null && name.equals(groupName))
+                        {
+                            Toast.makeText(getContext(), "This group existing", Toast.LENGTH_SHORT).show();
+
+                        }
+
 
                     } else {
                         DatabaseReference childRef = ref.child(groupId);
 //                        childRef.setValue(new Group(groupId, groupName));
                         childRef.setValue(group1);
 
-                        Toast.makeText(getContext(), "This group is created", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "This group is created", Toast.LENGTH_SHORT).show();
 
                     }
 

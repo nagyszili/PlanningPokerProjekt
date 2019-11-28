@@ -1,6 +1,7 @@
 package com.example.projekt1;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -30,11 +33,13 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
     private DatabaseReference group;
     private DatabaseReference dbFeatures;
     private DatabaseReference activeFeature;
+    private FragmentManager fragmentManager;
+    private Feature aFeature;
 
     public FeaturesAdapter() {
     }
 
-    public FeaturesAdapter(Context context, ArrayList<Feature> features, String groupId) {
+    public FeaturesAdapter(Context context, ArrayList<Feature> features, String groupId,FragmentManager fragmentManager) {
         this.context = context;
         this.features = features;
         this.groupId = groupId;
@@ -42,6 +47,7 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
         group = database.getReference("groups/" + groupId);
         dbFeatures = group.child("features");
         activeFeature = group.child("activeFeature");
+        this.fragmentManager = fragmentManager;
     }
 
     @NonNull
@@ -55,31 +61,33 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final FeaturesAdapter.ViewHolder holder, final int position) {
-        holder.textView.setText(features.get(position).getName());
-        Toast.makeText(context, features.get(position).getName(), Toast.LENGTH_SHORT).show();
+        holder.textView.setText(features.get(position).getName().concat(String.valueOf(features.get(position).getId())));
+//        Toast.makeText(context, features.get(position).getName(), Toast.LENGTH_SHORT).show();
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("groupId", groupId);
+
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                ListVoteFragment listVoteFragment = new ListVoteFragment(context);
+                listVoteFragment.setArguments(bundle);
+
+                transaction.replace(R.id.container, listVoteFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
 
         holder.aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked) {
 
-//                    for (Feature f : features) {
-//
-//                        if (features.get(position) != f) {
-//                            f.setActive(false);
-//                            holder.aSwitch.setChecked(false);
-//
-//
-//
-//                        } else {
-//                            f.setActive(true);
-//                            holder.aSwitch.setChecked(true);
-//
-//
-//                        }
-//                    }
+                if (isChecked) {
                     features.get(position).setActive(true);
                     group.child("activeFeature").setValue(features.get(position));
 
@@ -88,10 +96,7 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
                     group.child("activeFeature").setValue(null);
                     features.get(position).setActive(false);
 
-
                 }
-
-
             }
         });
 
@@ -101,36 +106,7 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
             holder.aSwitch.setChecked(false);
         }
 
-//        group.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                Group group = dataSnapshot.getValue(Group.class);
-//
-////                for (DataSnapshot data : dataSnapshot.getChildren())
-////                {
-////
-////                }
-//                Feature aFeature = group != null ? group.getActiveFeature() : null;
-////                if (aFeature != null)
-////                {
-//                    if (aFeature != null && aFeature.equals(features.get(position))) {
-//                        holder.aSwitch.setChecked(true);
-//                    }
-//                    else {
-//                        holder.aSwitch.setChecked(false);
-//
-//                    }
-//
-////                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+
 
 
     }

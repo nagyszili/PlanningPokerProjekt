@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +38,7 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
     private FloatingActionButton fab;
     private DatabaseReference group;
     private DatabaseReference dbFeatures;
+    private FragmentManager fragmentManager;
 
 
     public SetFeaturesFragment() {
@@ -51,8 +53,10 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.set_question_fragment_layout, container, false);
+
         fab = view.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(this);
+        this.fragmentManager = getActivity().getSupportFragmentManager();
 
         Bundle args = getArguments();
         String groupName =  args != null ? args.getString("groupName") : null;
@@ -78,7 +82,7 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
                 if (!features.isEmpty()){
 
                     recyclerView = view.findViewById(R.id.listFeaturesRecyclerView);
-                    adapter = new FeaturesAdapter(view.getContext(),features,groupId);
+                    adapter = new FeaturesAdapter(view.getContext(),features,groupId,fragmentManager);
                     recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
                     recyclerView.setAdapter(adapter);
                 }
@@ -100,7 +104,7 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        final Feature feature = new Feature();
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Add New Feature");
@@ -118,6 +122,7 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
                 dialog.dismiss();
                 if (!input.getText().toString().isEmpty())
                 {
+                    Feature feature = new Feature();
                     feature.setName(input.getText().toString());
 //                    features.add(feature);
                     group.child("features").child(String.valueOf(feature.getId())).setValue(feature);
