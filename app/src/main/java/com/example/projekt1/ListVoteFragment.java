@@ -55,6 +55,8 @@ public class ListVoteFragment extends Fragment {
         dbFeatures = group.child("features");
         activeFeature = group.child("activeFeature");
 
+
+
         activeFeature.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

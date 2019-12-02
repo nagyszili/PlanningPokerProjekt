@@ -1,6 +1,6 @@
 package com.example.projekt1;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Feature {
 
@@ -8,17 +8,17 @@ public class Feature {
     private static int count;
     private int id;
     private boolean active;
-    private ArrayList<User> usersVoted = new ArrayList<>();
+    private HashMap<String,User> usersVoted = new HashMap<>();
 
     public Feature() {
         count += 1;
-        this.id =  count;
+        this.id = count;
     }
 
     public Feature(String name) {
         this.name = name;
         count += 1;
-        this.id =  count;
+        this.id = count;
 
     }
 
@@ -46,11 +46,12 @@ public class Feature {
         return count;
     }
 
+
     public boolean isActive() {
         return active;
     }
 
-    public ArrayList<User> getUsersVoted() {
+    public HashMap<String,User> getUsersVoted() {
         return usersVoted;
     }
 
@@ -66,12 +67,11 @@ public class Feature {
         this.active = active;
     }
 
-    public void setUsersVoted(ArrayList<User> usersVoted) {
-        this.usersVoted = usersVoted;
-    }
+//    public void setUsersVoted(HashMap<String,User> usersVoted) {
+//        this.usersVoted = usersVoted;
+//    }
 
-    public void addVotedUser(User user)
-    {
-        this.usersVoted.add(user);
-    }
+//    public void addVotedUser(User user) {
+//        this.usersVoted.put(user.getName(),user);
+//    }
 }

@@ -2,21 +2,21 @@ package com.example.projekt1;
 
 public class User {
 
-    private static int countUser;
-    private int id;
+//    private static int countUser;
+//    private int id;
     private String name;
     private String votedValue;
 
     public User() {
-        countUser += 1;
-        this.id = countUser;
+//        countUser += 1;
+//        this.id = countUser;
     }
 
 
     public User(String name) {
-        countUser += 1;
+//        countUser += 1;
         this.name = name;
-        this.id = countUser;
+//        this.id = countUser;
     }
 
 //    public User(int id, String name) {
@@ -26,13 +26,13 @@ public class User {
 //    }
 
 
-    public int getCountUser() {
-        return countUser;
-    }
+//    public int getCountUser() {
+//        return countUser;
+//    }
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
     public String getName() {
         return name;

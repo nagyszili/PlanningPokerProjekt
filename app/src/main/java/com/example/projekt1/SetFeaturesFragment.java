@@ -59,7 +59,7 @@ public class SetFeaturesFragment extends Fragment implements View.OnClickListene
         this.fragmentManager = getActivity().getSupportFragmentManager();
 
         Bundle args = getArguments();
-        String groupName =  args != null ? args.getString("groupName") : null;
+//        String groupName =  args != null ? args.getString("groupName") : null;
         final String groupId =  args != null ? args.getString("groupId") : null;
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();

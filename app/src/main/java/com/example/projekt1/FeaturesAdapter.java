@@ -61,7 +61,7 @@ public class FeaturesAdapter extends RecyclerView.Adapter<FeaturesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final FeaturesAdapter.ViewHolder holder, final int position) {
-        holder.textView.setText(features.get(position).getName().concat(String.valueOf(features.get(position).getId())));
+        holder.textView.setText(features.get(position).getName());
 //        Toast.makeText(context, features.get(position).getName(), Toast.LENGTH_SHORT).show();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
